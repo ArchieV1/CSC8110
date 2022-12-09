@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  web_app:
+    image: "nclcloudcomputing/javabenchmarkapp"
+
+  load_generator:
+    image: "locustio/locust"
+
+  database:
+    image: "mongo"
+
+  monitor:
+    image: "gcr.io/cadvisor/cadvisor:v0.45.0"
+
+  visualizer:
+    image: "dockersamples/visualizer"
