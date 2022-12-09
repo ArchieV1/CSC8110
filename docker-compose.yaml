@@ -7,7 +7,6 @@ services:
       replicas: 1
     ports:
       - "8080:8080"
-    restart: "always"
 
   locust_master:
     image: "locustio/locust"
@@ -15,7 +14,6 @@ services:
       replicas: 1
     ports:
       - "8089:8089"
-    restart: "always"
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --master -H http://master:8089"
@@ -24,7 +22,6 @@ services:
     image: "locustio/locust"
     deploy:
       replicas: 1
-    restart: "always"
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host master"
@@ -36,7 +33,6 @@ services:
       replicas: 1
     ports:
       - "27017:27017"
-    restart: "always"
     environment:
       MONGO_INITDB_ROOT_USERNAME: "root"
       MONGO_INITDB_ROOT_PASSWORD: "example"
@@ -47,7 +43,6 @@ services:
       replicas: 1
     ports:
       - "8081:8080"
-    restart: "always"
     volumes:
       - "/:/rootfs:ro"
       - "/var/run:/var/run:ro"
@@ -62,6 +57,5 @@ services:
       replicas: 1
     ports:
       - "8082:8080"
-    restart: "always"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
