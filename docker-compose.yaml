@@ -1,17 +1,51 @@
 version: "3"
 
 services:
-  web_app:
+  javabenchmarkapp:
     image: "nclcloudcomputing/javabenchmarkapp"
+    ports:
+      - "8080:8080"
 
-  load_generator:
+  locust_master:
     image: "locustio/locust"
+    ports:
+      - "8089:8089"
+    volumes:
+      - "./:/mnt/locust"
+    command: "-f /mnt/locust/locustfile.py --master -H http://master:8089"
 
-  database:
+  locust_worker:
+    image: "locustio/locust"
+    volumes:
+      - "./:/mnt/locust"
+    command: "-f /mnt/locust/locustfile.py --worker --master-host master"
+
+
+  mongodb:
     image: "mongo"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: "root"
+      MONGO_INITDB_ROOT_PASSWORD: "example"
+    ports:
+      - "27017:27017"
 
-  monitor:
+  cadvisor:
     image: "gcr.io/cadvisor/cadvisor:v0.45.0"
+    ports:
+      - "8081:8080"
+    restart: "always"
+    volumes:
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:ro"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker/:/var/lib/docker:ro"
+      - "/dev/disk/:/dev/disk:ro"
+
 
   visualizer:
     image: "dockersamples/visualizer"
+    ports:
+      - "8082:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
