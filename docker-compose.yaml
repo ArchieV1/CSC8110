@@ -3,19 +3,28 @@ version: "3"
 services:
   javabenchmarkapp:
     image: "nclcloudcomputing/javabenchmarkapp"
+    deploy:
+      replicas: 1
     ports:
       - "8080:8080"
+    restart: "always"
 
   locust_master:
     image: "locustio/locust"
+    deploy:
+      replicas: 1
     ports:
       - "8089:8089"
+    restart: "always"
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --master -H http://master:8089"
 
   locust_worker:
     image: "locustio/locust"
+    deploy:
+      replicas: 1
+    restart: "always"
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host master"
@@ -23,15 +32,19 @@ services:
 
   mongodb:
     image: "mongo"
-    restart: always
+    deploy:
+      replicas: 1
+    ports:
+      - "27017:27017"
+    restart: "always"
     environment:
       MONGO_INITDB_ROOT_USERNAME: "root"
       MONGO_INITDB_ROOT_PASSWORD: "example"
-    ports:
-      - "27017:27017"
 
   cadvisor:
     image: "gcr.io/cadvisor/cadvisor:v0.45.0"
+    deploy:
+      replicas: 1
     ports:
       - "8081:8080"
     restart: "always"
@@ -45,7 +58,10 @@ services:
 
   visualizer:
     image: "dockersamples/visualizer"
+    deploy:
+      replicas: 1
     ports:
       - "8082:8080"
+    restart: "always"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
