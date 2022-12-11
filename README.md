@@ -16,3 +16,8 @@ cAdvisor: `localhost:8081`
 Visualizer: `localhost:8082`  
 
 ## Task 3
+`mvn compile assembly:single`  
+`java -jar <path_to_jar.jar>`
+  
+Locally:
+`java -jar `
