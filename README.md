@@ -19,4 +19,12 @@ Visualizer: `localhost:8082`
 `cd cadvisor-scraper-master`  
 `mvn compile assembly:single`  
 `java -jar target/cadvisor-scrape-1.0-jar-with-dependencies.jar`
+  
+`docker build -t greenking2000:cadvisor-scraper`  
+`docker push greenking2000:cadvisor-scraper`
 
+## Task 4
+`docker pull greenking2000:cadvisor-scraper`
+
+
+`mongo-express --url mongodb://127.0.0.1:27017`

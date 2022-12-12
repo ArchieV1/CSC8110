@@ -58,3 +58,10 @@ services:
       - "8082:8080"
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
+
+  mongo-express:
+    image: "mongo-express"
+    deploy:
+      replicas: 1
+    ports:
+      - "8083:8081"
