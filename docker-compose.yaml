@@ -75,8 +75,7 @@ services:
       - ME_CONFIG_BASICAUTH_USERNAME=""
       - ME_CONFIG_BASICAUTH_PASSWORD=""
     depends_on:
-      - "mongo"db
-
+      - "mongodb"
 #networks:
 #  mongo-network:
 #    driver: "bridge"

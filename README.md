@@ -28,3 +28,8 @@ Visualizer: `localhost:8082`
 
 
 `mongo-express --url mongodb://127.0.0.1:27017`
+
+
+## Quick
+`docker swarm leave --force && docker swarm init`
+`docker stack deploy -c docker-compose.yaml CSC8110`
