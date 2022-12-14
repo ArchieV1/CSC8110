@@ -3,7 +3,6 @@ version: "3"
 services:
   javabenchmarkapp:
     image: "nclcloudcomputing/javabenchmarkapp"
-    container_name: "javabenchmarkapp"
     deploy:
       replicas: 1
     ports:
@@ -11,7 +10,6 @@ services:
 
   locust_master:
     image: "locustio/locust"
-    container_name: "locust_master"
     deploy:
       replicas: 1
     ports:
@@ -22,7 +20,6 @@ services:
 
   locust_worker:
     image: "locustio/locust"
-    container_name: "locust_worker"
     deploy:
       replicas: 1
     volumes:
@@ -31,7 +28,6 @@ services:
 
   mongodb:
     image: "mongo"
-    container_name: "mongodb"
     deploy:
       replicas: 1
     ports:
@@ -43,7 +39,6 @@ services:
 
   cadvisor:
     image: "gcr.io/cadvisor/cadvisor:v0.45.0"
-    container_name: "cadvisor"
     deploy:
       replicas: 1
     ports:
@@ -57,7 +52,6 @@ services:
 
   visualizer:
     image: "dockersamples/visualizer"
-    container_name: "visualizer"
     deploy:
       replicas: 1
     ports:
@@ -67,7 +61,6 @@ services:
 
   mongo-express:
     image: "mongo-express"
-    container_name: "mongo-express"
     deploy:
       replicas: 1
     ports:
