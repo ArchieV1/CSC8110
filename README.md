@@ -37,3 +37,5 @@ If docker dies:
 `sudo systemctl stop docker`  
 `sudo rm -r /var/lib/docker/swarm`  
 `sudo systemctl start docker`
+
+`sudo systemctl stop docker && sudo rm -r /var/lib/docker/swarm && sudo systemctl start docker`
