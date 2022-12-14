@@ -32,3 +32,8 @@ Visualizer: `localhost:8082`
 
 ## Quick
 `docker swarm leave --force && docker swarm init && docker stack deploy -c docker-compose.yaml CSC8110`
+  
+If docker dies:  
+`sudo systemctl stop docker`  
+`sudo rm -r /var/lib/docker/swarm`  
+`sudo systemctl start docker`

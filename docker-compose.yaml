@@ -9,18 +9,6 @@ services:
     ports:
       - "8080:8080"
 
-# https://hub.docker.com/_/mongo
-  mongodb:
-    image: "mongo"
-    deploy:
-      replicas: 1
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=db
-
 # https://hub.docker.com/r/locustio/locust
   locust_master:
     image: "locustio/locust"
@@ -64,6 +52,18 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  # https://hub.docker.com/_/mongo
+  mongodb:
+    image: "mongo"
+    deploy:
+      replicas: 1
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=db
+
 # https://hub.docker.com/_/mongo-express/
   mongo-express:
     image: "mongo-express"
@@ -73,5 +73,5 @@ services:
       replicas: 1
     ports:
       - "8083:8081"
-#    environment:
-#      - ME_CONFIG_MONGODB_URL=mongodb://root:password@mongodb:27017/db?ssl=false
+    environment:
+      - ME_CONFIG_MONGODB_URL=mongodb://root:password@mongodb:27017/db?ssl=false
