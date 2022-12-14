@@ -42,12 +42,12 @@ public class Main {
     //MongoDB address
     //Change the host IP HERE!
 //    private static final String mongodbAddress = "mongodb://192.168.44.131:27017";
-    private static final String mongodbAddress = "mongodb://mongo:27017";
+    private static final String mongodbAddress = "mongodb://host.docker.internal:27017";
 
     //cAdvisor API endpoint
     //Change the host IP HERE!
 //    private static final String endpoint = "http://192.168.44.131:8080/api/v1.3/docker/";
-    private static final String endpoint = "http://cadvisor:8082/api/v1.3/docker/";
+    private static final String endpoint = "http://host.docker.internal:8082/api/v1.3/docker/";
 
     //Temporary storage of metrics
     //Each entry in the map corresponds to 1 second of metric
