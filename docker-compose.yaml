@@ -3,6 +3,7 @@ version: "3"
 services:
   javabenchmarkapp:
     image: "nclcloudcomputing/javabenchmarkapp"
+    container_name: "javabenchmarkapp"
     deploy:
       replicas: 1
     ports:
@@ -10,6 +11,7 @@ services:
 
   locust_master:
     image: "locustio/locust"
+    container_name: "locust_master"
     deploy:
       replicas: 1
     ports:
@@ -20,6 +22,7 @@ services:
 
   locust_worker:
     image: "locustio/locust"
+    container_name: "locust_worker"
     deploy:
       replicas: 1
     volumes:
@@ -28,6 +31,7 @@ services:
 
   mongodb:
     image: "mongo"
+    container_name: "mongodb"
     deploy:
       replicas: 1
     ports:
@@ -39,6 +43,7 @@ services:
 
   cadvisor:
     image: "gcr.io/cadvisor/cadvisor:v0.45.0"
+    container_name: "cadvisor"
     deploy:
       replicas: 1
     ports:
@@ -52,6 +57,7 @@ services:
 
   visualizer:
     image: "dockersamples/visualizer"
+    container_name: "visualizer"
     deploy:
       replicas: 1
     ports:
@@ -61,21 +67,21 @@ services:
 
   mongo-express:
     image: "mongo-express"
+    container_name: "mongo-express"
     deploy:
       replicas: 1
     ports:
       - "8083:8081"
     environment:
       - ME_CONFIG_MONGODB_SERVER="mongodb"
-      - ME_CONFIG_MONGODB_PORT="27017"
+      - ME_CONFIG_MONGODB_URL="mongodb://mongodb:27017
+#      - ME_CONFIG_MONGODB_PORT="27017"
       - ME_CONFIG_MONGODB_ENABLE_ADMIN="true"
       - ME_CONFIG_MONGODB_AUTH_DATABASE="admin"
       - ME_CONFIG_MONGODB_AUTH_USERNAME="root"
       - ME_CONFIG_MONGODB_AUTH_PASSWORD="password"
       - ME_CONFIG_BASICAUTH_USERNAME=""
       - ME_CONFIG_BASICAUTH_PASSWORD=""
+
     depends_on:
       - "mongodb"
-#networks:
-#  mongo-network:
-#    driver: "bridge"
