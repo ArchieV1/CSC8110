@@ -82,3 +82,12 @@ services:
       - ME_CONFIG_MONGODB_AUTH_DATABASE=db
       - ME_CONFIG_MONGODB_AUTH_USERNAME=admin
       - ME_CONFIG_MONGODB_AUTH_PASSWORD=pass
+
+# https://hub.docker.com/r/greenking2000/cadvisor-scraper
+  advisor-scraper:
+    image: "greenking2000/cadvisor-scraper"
+    depends_on:
+      - "cadvisor"
+    deploy:
+      replicas: 1
+
