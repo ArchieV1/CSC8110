@@ -57,7 +57,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=database
+      - MONGO_INITDB_DATABASE=db
 
   mongo-express:
     image: "mongo-express"
@@ -68,12 +68,7 @@ services:
     ports:
       - "8083:8081"
     environment:
-      - ME_CONFIG_MONGODB_SERVER=mongodb
-      - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017
-#      - ME_CONFIG_MONGODB_PORT="27017"
-#      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-#      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
-      - ME_CONFIG_MONGODB_AUTH_USERNAME=root
-      - ME_CONFIG_MONGODB_AUTH_PASSWORD=password
-#      - ME_CONFIG_BASICAUTH_USERNAME=""
-#      - ME_CONFIG_BASICAUTH_PASSWORD=""
+#      - ME_CONFIG_MONGODB_SERVER=mongodb
+      - ME_CONFIG_MONGODB_URL=mongodb://root:password@mongodb:27017/db?ssl=false
+#      - ME_CONFIG_MONGODB_AUTH_USERNAME=root
+#      - ME_CONFIG_MONGODB_AUTH_PASSWORD=password
