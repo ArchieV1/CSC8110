@@ -26,17 +26,6 @@ services:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host master"
 
-  mongodb:
-    image: "mongo"
-    deploy:
-      replicas: 1
-    ports:
-      - "27017:27017"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=root
-      - MONGO_INITDB_ROOT_PASSWORD=password
-      - MONGO_INITDB_DATABASE=database
-
   cadvisor:
     image: "gcr.io/cadvisor/cadvisor:v0.45.0"
     deploy:
@@ -59,8 +48,21 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
 
+  mongodb:
+    image: "mongo"
+    deploy:
+      replicas: 1
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=database
+
   mongo-express:
     image: "mongo-express"
+    depends_on:
+      - "mongodb"
     deploy:
       replicas: 1
     ports:
@@ -69,12 +71,9 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
       - ME_CONFIG_MONGODB_URL=mongodb://mongodb:27017
 #      - ME_CONFIG_MONGODB_PORT="27017"
-      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
-      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
+#      - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+#      - ME_CONFIG_MONGODB_AUTH_DATABASE=admin
       - ME_CONFIG_MONGODB_AUTH_USERNAME=root
       - ME_CONFIG_MONGODB_AUTH_PASSWORD=password
 #      - ME_CONFIG_BASICAUTH_USERNAME=""
 #      - ME_CONFIG_BASICAUTH_PASSWORD=""
-
-    depends_on:
-      - "mongodb"
