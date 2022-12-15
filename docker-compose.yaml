@@ -1,9 +1,8 @@
 version: "3"
 
 networks:
-  public:
-    external:
-      name: my_network
+  my_network:
+    external: true
 
 services:
 # https://hub.docker.com/r/nclcloudcomputing/javabenchmarkapp
