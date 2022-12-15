@@ -1,5 +1,10 @@
 version: "3"
 
+networks:
+  public:
+    external:
+      name: my_network
+
 services:
 # https://hub.docker.com/r/nclcloudcomputing/javabenchmarkapp
   javabenchmarkapp:
@@ -86,8 +91,3 @@ services:
       - ME_CONFIG_MONGODB_POR=27017
     networks:
       - my_network
-
-networks:
-  public:
-    external:
-      name: my_network
