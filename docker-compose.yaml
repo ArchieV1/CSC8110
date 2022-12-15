@@ -9,7 +9,7 @@ services:
     ports:
       - "8080:8080"
     networks:
-      - CSC8110_network
+      - my_network
 
 # https://hub.docker.com/r/locustio/locust
   locust_master:
@@ -22,7 +22,7 @@ services:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --master -H http://master:8089"
     networks:
-      - CSC8110_network
+      - my_network
 
   locust_worker:
     image: "locustio/locust"
@@ -32,7 +32,7 @@ services:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host master"
     networks:
-      - CSC8110_network
+      - my_network
 
 # https://hub.docker.com/r/google/cadvisor
   cadvisor:
@@ -48,7 +48,7 @@ services:
       - "/var/lib/docker/:/var/lib/docker:ro"
       - "/dev/disk/:/dev/disk:ro"
     networks:
-      - CSC8110_network
+      - my_network
 
 # https://hub.docker.com/r/dockersamples/visualizer
   visualizer:
@@ -60,7 +60,7 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
     networks:
-      - CSC8110_network
+      - my_network
 
 # https://hub.docker.com/_/mongo
   mongo:
@@ -70,7 +70,7 @@ services:
     ports:
       - "27017:27017"
     networks:
-      - CSC8110_network
+      - my_network
 
 # https://hub.docker.com/_/mongo-express/
   mongo-express:
@@ -85,9 +85,9 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongo
       - ME_CONFIG_MONGODB_POR=27017
     networks:
-      - CSC8110_network
+      - my_network
 
 networks:
   public:
     external:
-      name: "network"
+      name: my_network
