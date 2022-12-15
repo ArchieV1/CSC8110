@@ -41,14 +41,13 @@ public class Main {
 
     //MongoDB address
     //Change the host IP HERE!
-//    private static final String mongodbAddress = "mongodb://192.168.44.131:27017";
-    private static final String mongodbAddress = "mongodb://172.17.0.1:27017";
+//    private static final String mongodbAddress = "mongodb://172.17.0.1:27017"; // Inside swarm
+    private static final String mongodbAddress = "mongodb://172.17.0.1:27017"; // Outside swarm
 
     //cAdvisor API endpoint
     //Change the host IP HERE!
-//    private static final String endpoint = "http://192.168.44.131:8080/api/v1.3/docker/";
-    // cAdvisor is *8081*
-    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/";
+//    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/"; // Inside swarm
+    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/"; // Outside swarm
 
     //Temporary storage of metrics
     //Each entry in the map corresponds to 1 second of metric
