@@ -90,4 +90,4 @@ services:
 networks:
   public:
     external:
-      name: "CSC8110_network"
+      name: "network"
