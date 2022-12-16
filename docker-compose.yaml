@@ -16,6 +16,7 @@ services:
       - my_network
 
 # https://hub.docker.com/r/locustio/locust
+# https://docs.locust.io/en/stable/configuration.html
   locust_master:
     image: "locustio/locust"
     deploy:
@@ -31,7 +32,7 @@ services:
   locust_worker:
     image: "locustio/locust"
     deploy:
-      replicas: 1
+      replicas: 5
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host locust_master"
