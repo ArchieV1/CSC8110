@@ -21,13 +21,14 @@ resource "azurerm_resource_group" "csc8110-resource-group" {
 
 # Create container registry
 resource "azurerm_container_registry" "csc8110-container-registry" {
-  name                = "csc8110-container-registry"
+  name                = "csc8110containerregistry"
   resource_group_name = "csc8110-resource-group"
   location            = "eastus2"
-  sku                 = "standard"
+  sku                 = "Standard"
 }
 
 # Create the kubernetes cluster names "csc8110"
+# Task 5.2
 resource "azurerm_kubernetes_cluster" "csc8110" {
   name                = "csc8110"
   location            = "eastus2"
@@ -43,4 +44,18 @@ resource "azurerm_kubernetes_cluster" "csc8110" {
   identity {
     type = "SystemAssigned"
   }
+}
+
+# Create microservice of alpine
+# Task 5.3
+resource "azurerm_kubernetes_deployment" "alpine-deployment" {
+  name                   = "alpine-deployment"
+  resource_group_name    = "csc8110-resource-group"
+  cluster_name           = "csc8110"
+  depends_on             = ["csc8110"]
+  container_image_names  = ["alpine:latest"]
+  container_name         = "alpine"
+  container_port         = 8080
+  replica_count          = 1
+  pod_template_hash      = "2468101214"
 }
