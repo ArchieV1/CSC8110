@@ -19,6 +19,14 @@ resource "azurerm_resource_group" "csc8110-resource-group" {
   location = "eastus2"
 }
 
+# Create container registry
+resource "azurerm_container_registry" "csc8110-container-registry" {
+  name                = "csc8110-container-registry"
+  resource_group_name = "csc8110-resource-group"
+  location            = "eastus2"
+  sku                 = "standard"
+}
+
 # Create the kubernetes cluster names "csc8110"
 resource "azurerm_kubernetes_cluster" "csc8110" {
   name                = "csc8110"
