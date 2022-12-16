@@ -37,17 +37,15 @@ public class Main {
 
     //Container ID to monitor - You have to find the container ID via the web frontend of cAdvisor or via Docker command line!
     //Change the ID HERE!
-    private static final String containerId = "0c4797a959ca230bcb33bae07a93cdf9342b62f7b277f3f3a80e274445eb104e";
+    private static final String containerId = "eb0bfbb72076c8d05ef17c5db3d9fb70445e10669ba306656b263a1277ae5070";
 
     //MongoDB address
     //Change the host IP HERE!
-//    private static final String mongodbAddress = "mongodb://172.17.0.1:27017"; // Inside swarm
-    private static final String mongodbAddress = "mongodb://172.17.0.1:27017"; // Outside swarm
+    private static final String mongodbAddress = "mongodb://172.17.0.1:27017";
 
     //cAdvisor API endpoint
     //Change the host IP HERE!
-//    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/"; // Inside swarm
-    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/"; // Outside swarm
+    private static final String endpoint = "http://172.17.0.1:8081/api/v1.3/docker/";
 
     //Temporary storage of metrics
     //Each entry in the map corresponds to 1 second of metric
