@@ -24,7 +24,7 @@ services:
       - "8089:8089"
     volumes:
       - "./:/mnt/locust"
-    command: "-f /mnt/locust/locustfile.py --master -H http://locust_master:8089"
+    command: "-f /mnt/locust/locustfile.py --master -H http://javabenchmarkapp:8080"
     networks:
       - my_network
 
