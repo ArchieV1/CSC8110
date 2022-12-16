@@ -37,7 +37,7 @@ public class Main {
 
     //Container ID to monitor - You have to find the container ID via the web frontend of cAdvisor or via Docker command line!
     //Change the ID HERE!
-    private static final String containerId = "eb0bfbb72076c8d05ef17c5db3d9fb70445e10669ba306656b263a1277ae5070";
+    private static final String containerId = "b586d9697e58ad05ec1f0f80bb89c957df39961d28b70f8a30f445cf6caaab37";
 
     //MongoDB address
     //Change the host IP HERE!
