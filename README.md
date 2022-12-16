@@ -18,6 +18,7 @@ docker pull dockersamples/visualizer
 `git pull`  
 
 `docker swarm init`  
+`docker network create --driver overlay --attachable my_network`  
 `docker stack deploy -c docker-compose.yaml CSC8110`
 
 cAdvisor: `http://localhost:8081`  
@@ -41,7 +42,6 @@ mongo-express: `localhost:8083`
 ## Task 4
 Run Swarm and Scraper under same network  
 `docker pull greenking2000/cadvisor-scraper:latest`  
-`docker network create --driver overlay --attachable my_network`  
 
 `docker stack deploy -c docker-compose.yaml CSC8110 --with-registry-auth`  
 `docker run greenking2000/cadvisor-scraper --network=my_network`
