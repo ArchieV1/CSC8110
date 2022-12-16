@@ -16,7 +16,7 @@ services:
       - my_network
 
 # https://hub.docker.com/r/locustio/locust
-  locust_master:
+  master:
     image: "locustio/locust"
     deploy:
       replicas: 1
@@ -24,17 +24,17 @@ services:
       - "8089:8089"
     volumes:
       - "./:/mnt/locust"
-    command: "-f /mnt/locust/locustfile.py --master -H http://locust_master:8089"
+    command: "-f /mnt/locust/locustfile.py --master -H http://master:8089"
     networks:
       - my_network
 
-  locust_worker:
+  worker:
     image: "locustio/locust"
     deploy:
       replicas: 1
     volumes:
       - "./:/mnt/locust"
-    command: "-f /mnt/locust/locustfile.py --worker --master-host locust_master"
+    command: "-f /mnt/locust/locustfile.py --worker --master-host master"
     networks:
       - my_network
 
