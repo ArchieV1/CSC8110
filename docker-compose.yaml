@@ -32,7 +32,7 @@ services:
   locust_worker:
     image: "locustio/locust"
     deploy:
-      replicas: 5
+      replicas: 3
     volumes:
       - "./:/mnt/locust"
     command: "-f /mnt/locust/locustfile.py --worker --master-host locust_master"

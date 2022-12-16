@@ -45,17 +45,3 @@ resource "azurerm_kubernetes_cluster" "csc8110" {
     type = "SystemAssigned"
   }
 }
-
-# Create microservice of alpine
-# Task 5.3
-resource "azurerm_kubernetes_deployment" "alpine-deployment" {
-  name                   = "alpine-deployment"
-  resource_group_name    = "csc8110-resource-group"
-  cluster_name           = "csc8110"
-  depends_on             = ["csc8110"]
-  container_image_names  = ["alpine:latest"]
-  container_name         = "alpine"
-  container_port         = 8080
-  replica_count          = 1
-  pod_template_hash      = "2468101214"
-}
