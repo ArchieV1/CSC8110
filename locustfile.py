@@ -6,5 +6,5 @@ class QuickstartUser(HttpUser):
     wait_time = between(1, 5)
 
     @task
-    def hello_world(self):
-        self.client.get("http://localhost:8080/primecheck")
+    def primecheck(self):
+        self.client.get("/primecheck")
